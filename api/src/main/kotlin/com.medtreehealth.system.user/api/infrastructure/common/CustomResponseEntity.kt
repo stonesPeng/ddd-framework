@@ -7,7 +7,7 @@ package com.medtreehealth.system.user.api.infrastructure.common
 data class CustomResponseEntity<T : Any>(
         val code: Int,
         val message: String,
-        val data: T?
+        val data: T? = null
 
 ) {
     override fun toString(): String {
