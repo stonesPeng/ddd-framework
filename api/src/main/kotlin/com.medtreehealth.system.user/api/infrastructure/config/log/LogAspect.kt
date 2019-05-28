@@ -9,7 +9,6 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import org.springframework.validation.Errors
-import java.util.*
 import javax.servlet.http.HttpServletResponse
 
 /**
@@ -29,10 +28,10 @@ class LogAspect {
 
     @Before("pointcut()")
     fun logMethodInvokeParam(joinPoint: JoinPoint) {
-        val param = listOf(joinPoint.args).filter { o -> Objects.nonNull(o) && o !is HttpServletResponse && o !is Errors }
-                .map { i -> i.toString() }
+        joinPoint.args.filter { o -> null != o && o !is HttpServletResponse && o !is Errors }
+                .map { i -> "$i" }
                 .reduce { o, t -> "($o), ($t)" }
-        log.info("Method:[{}], ParamsDto:[{}]", joinPoint.signature.name, param)
+                .let { log.info("Method:[{}], ParamsDto:[{}]", joinPoint.signature.name, it) }
     }
 
     @AfterReturning(pointcut = "pointcut()", returning = "result")

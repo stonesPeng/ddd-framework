@@ -23,7 +23,7 @@ class ExampleController {
     @PostMapping("/test")
     fun testMethod(@RequestBody dto:ParamsDto):CustomResponseEntity<String> = run{
         try{
-            CustomResponseEntity(1,"","bingo")
+            CustomResponseEntity(1, "", "bingo $dto")
         }catch (e:Exception){
             val err = e.message?:"测试方法异常"
             log.error(err)

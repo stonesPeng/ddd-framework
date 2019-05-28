@@ -16,4 +16,8 @@ data class ParamsDto (
         private val id:Long,
         @ApiModelProperty(value="name" ,required=true) @NotBlank(message = "姓名非空")
         private val name:String
-)
+) {
+        override fun toString(): String {
+                return "ParamsDto(id=$id, name='$name')"
+        }
+}
