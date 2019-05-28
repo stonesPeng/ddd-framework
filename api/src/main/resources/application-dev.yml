@@ -1,0 +1,22 @@
+spring:
+  #jdbc
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.99.100:3305/quest?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: zen
+    password: zen
+  #redis
+  redis:
+    database: 1
+    host: 192.168.99.100
+    port: 6379
+    password: 123456
+    lettuce:
+      pool:
+        max-active: 7
+        max-idle: 7
+        min-idle: 2
+        max-wait: -1ms
+
+
+

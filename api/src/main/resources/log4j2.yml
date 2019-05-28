@@ -1,0 +1,101 @@
+Configuration:
+  # 设置log4j2的自身log级别为info
+  # 日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL
+  # Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出
+  # monitorInterval：Log4j能够自动检测修改配置文件和重新配置本身，设置间隔秒数
+  status: INFO
+  name: LOG4J2_CONFIGURE
+  # 先定义所有的appender
+  appenders:
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        # 输出日志的格式
+        pattern: "%d [%p] - %l - %m%n"
+    RollingRandomAccessFile:
+      - # 文件打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年-月-日建立的文件夹下面并进行压缩，作为存档
+        name: AllLog
+        fileName: logs/all.log
+        filePattern: logs/app-%d{yyyy-MM-dd}-%i.log
+        PatternLayout:
+          pattern: "%d [%t] [%p] - %l - %msg%xEx%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+          SizeBasedTriggeringPolicy:
+            size: 50 MB
+        DefaultRolloverStrategy:
+          max: 50
+      - # 文件打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年-月-日建立的文件夹下面并进行压缩，作为存档
+        name: AppLog
+        fileName: logs/app.log
+        filePattern: logs/app-%d{yyyy-MM-dd}-%i.log
+        PatternLayout:
+          pattern: "%d [%t] [%p] - %l - %msg%xEx%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+          SizeBasedTriggeringPolicy:
+            size: 50 MB
+        DefaultRolloverStrategy:
+          max: 50
+      - # 文件打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年-月-日建立的文件夹下面并进行压缩，作为存档
+        name: SpringLog
+        fileName: logs/spring.log
+        filePattern: logs/app-%d{yyyy-MM-dd}-%i.log
+        PatternLayout:
+          pattern: "%d [%t] [%p] - %l - %msg%xEx%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+          SizeBasedTriggeringPolicy:
+            size: 50 MB
+        DefaultRolloverStrategy:
+          max: 50
+      - # 文件打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年-月-日建立的文件夹下面并进行压缩，作为存档
+        name: MybatisLog
+        fileName: logs/mybatis.log
+        filePattern: logs/app-%d{yyyy-MM-dd}-%i.log
+        PatternLayout:
+          pattern: "%d [%t] [%p] - %l - %msg%xEx%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+          SizeBasedTriggeringPolicy:
+            size: 50 MB
+        DefaultRolloverStrategy:
+          max: 50
+
+
+  loggers:
+    # 定义logger，只有定义了logger并引入的appender，appender才会生效
+    logger:
+      - name: org.springframework
+        level: INFO
+        AppenderRef:
+          ref: SpringLog
+      - name: org.mybatis
+        level: INFO
+        AppenderRef:
+          ref: MybatisLog
+      - name: com.medtree
+        level: INFO
+        AppenderRef:
+          ref: AppLog
+
+
+    Root:
+      level: INFO
+      AppenderRef:
+        - ref: Console
+        - ref: AllLog
+
+
+
+
+

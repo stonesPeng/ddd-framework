@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [
+        <!ELEMENT project (modelVersion|groupId|artifactId|version|packaging|parent|dependencies|build)*>
+        <!ATTLIST project
+                xmlns CDATA #REQUIRED
+                xmlns:xsi CDATA #REQUIRED
+                xsi:schemaLocation CDATA #REQUIRED>
+        <!ELEMENT modelVersion (#PCDATA)>
+        <!ELEMENT groupId (#PCDATA)>
+        <!ELEMENT artifactId (#PCDATA)>
+        <!ELEMENT version (#PCDATA)>
+        <!ELEMENT packaging (#PCDATA)>
+        <!ELEMENT parent (groupId|artifactId|version|relativePath)*>
+        <!ELEMENT relativePath (#PCDATA)>
+        <!ELEMENT dependencies (dependency)*>
+        <!ELEMENT dependency (groupId|artifactId|version|optional)*>
+        <!ELEMENT optional (#PCDATA)>
+        <!ELEMENT build (sourceDirectory|plugins)*>
+        <!ELEMENT sourceDirectory (#PCDATA)>
+        <!ELEMENT plugins (plugin)*>
+        <!ELEMENT plugin (groupId|artifactId|version|executions|configuration)*>
+        <!ELEMENT executions (execution)*>
+        <!ELEMENT execution (id|goals|configuration|phase)*>
+        <!ELEMENT id (#PCDATA)>
+        <!ELEMENT goals (goal)*>
+        <!ELEMENT goal (#PCDATA)>
+        <!ELEMENT configuration (sourceDirs|annotationProcessorPaths|jvmTarget)*>
+        <!ELEMENT sourceDirs (sourceDir)*>
+        <!ELEMENT sourceDir (#PCDATA)>
+        <!ELEMENT annotationProcessorPaths (annotationProcessorPath)*>
+        <!ELEMENT annotationProcessorPath (groupId|artifactId|version)*>
+        <!ELEMENT phase (#PCDATA)>
+        <!ELEMENT jvmTarget (#PCDATA)>
+        ]>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.medtreehealth.system.user</groupId>
+    <artifactId>api</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.medtreehealth.system</groupId>
+        <artifactId>user</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <dependencies>
+        <!--        buz dependency-->
+        <dependency>
+            <groupId>com.medtreehealth.system.user</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--        database start-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--        swagger start-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <!--        jackson start-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+    </build>
+
+</project>

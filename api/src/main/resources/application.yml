@@ -1,0 +1,57 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: application-name
+    #ENV
+    profiles:
+      active: '@active.springboot.profile@'
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+  #aop
+  aop:
+    auto: true
+  #jdbc
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/system_user?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password:
+  #redis
+  redis:
+    database: 1
+    host: medicare.redis.zhangjiakou.rds.aliyuncs.com
+    port: 6379
+    password: gggggg
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+
+# Actuator
+management:
+  endpoint:
+    health:
+      show-details: always
+  health:
+    redis:
+      enabled: false
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+  #打印日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-handlers-package: com.medtree.authoritycenter.common.handlers
+
+
+
+
+
+
