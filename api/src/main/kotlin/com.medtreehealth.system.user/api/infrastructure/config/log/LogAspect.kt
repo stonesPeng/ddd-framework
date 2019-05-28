@@ -28,10 +28,10 @@ class LogAspect {
 
     @Before("pointcut()")
     fun logMethodInvokeParam(joinPoint: JoinPoint) {
-        joinPoint.args.filter { o -> null != o && o !is HttpServletResponse && o !is Errors }
-                .map { i -> "$i" }
-                .reduce { o, t -> "($o), ($t)" }
-                .let { log.info("Method:[{}], ParamsDto:[{}]", joinPoint.signature.name, it) }
+        joinPoint.args.takeIf { it.isNotEmpty() }?.filter { o -> null != o && o !is HttpServletResponse && o !is Errors }
+                ?.map { i -> "$i" }
+                ?.reduce { o, t -> "($o), ($t)" }
+                ?.let { log.info("Method:[{}], ParamsDto:[{}]", joinPoint.signature.name, it) }
     }
 
     @AfterReturning(pointcut = "pointcut()", returning = "result")

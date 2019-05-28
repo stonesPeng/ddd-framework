@@ -22,7 +22,7 @@ class ExampleController {
     @ApiOperation("测试方法")
     @PostMapping("/test")
     fun testMethod(@RequestBody dto:ParamsDto):CustomResponseEntity<String> = run{
-        throw Exception("abcdasdadad")
+        //throw Exception("abcdasdadad")
             CustomResponseEntity(1, "", "bingo $dto")
     }
 
