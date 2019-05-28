@@ -1,37 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE project [
-        <!ELEMENT project (modelVersion|groupId|artifactId|version|packaging|parent|dependencies|build)*>
-        <!ATTLIST project
-                xmlns CDATA #REQUIRED
-                xmlns:xsi CDATA #REQUIRED
-                xsi:schemaLocation CDATA #REQUIRED>
-        <!ELEMENT modelVersion (#PCDATA)>
-        <!ELEMENT groupId (#PCDATA)>
-        <!ELEMENT artifactId (#PCDATA)>
-        <!ELEMENT version (#PCDATA)>
-        <!ELEMENT packaging (#PCDATA)>
-        <!ELEMENT parent (groupId|artifactId|version|relativePath)*>
-        <!ELEMENT relativePath (#PCDATA)>
-        <!ELEMENT dependencies (dependency)*>
-        <!ELEMENT dependency (groupId|artifactId|version|optional)*>
-        <!ELEMENT optional (#PCDATA)>
-        <!ELEMENT build (sourceDirectory|plugins)*>
-        <!ELEMENT sourceDirectory (#PCDATA)>
-        <!ELEMENT plugins (plugin)*>
-        <!ELEMENT plugin (groupId|artifactId|version|executions|configuration)*>
-        <!ELEMENT executions (execution)*>
-        <!ELEMENT execution (id|goals|configuration|phase)*>
-        <!ELEMENT id (#PCDATA)>
-        <!ELEMENT goals (goal)*>
-        <!ELEMENT goal (#PCDATA)>
-        <!ELEMENT configuration (sourceDirs|annotationProcessorPaths|jvmTarget)*>
-        <!ELEMENT sourceDirs (sourceDir)*>
-        <!ELEMENT sourceDir (#PCDATA)>
-        <!ELEMENT annotationProcessorPaths (annotationProcessorPath)*>
-        <!ELEMENT annotationProcessorPath (groupId|artifactId|version)*>
-        <!ELEMENT phase (#PCDATA)>
-        <!ELEMENT jvmTarget (#PCDATA)>
-        ]>
+<!DOCTYPE project >
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.medtreehealth.system.user</groupId>
