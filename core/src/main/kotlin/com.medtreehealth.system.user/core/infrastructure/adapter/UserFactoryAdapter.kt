@@ -1,7 +1,7 @@
 package com.medtreehealth.system.user.core.infrastructure.adapter
 
-import com.medtreehealth.system.user.core.context.port.UserQueryPort
 import com.medtreehealth.system.user.core.domain.port.UserFactoryPort
+import com.medtreehealth.system.user.core.infrastructure.port.repo.UserRepositoryPort
 import org.springframework.stereotype.Service
 
 /**
@@ -10,7 +10,5 @@ import org.springframework.stereotype.Service
  */
 @Service
 class UserFactoryAdapter(
-):UserFactoryPort, UserQueryPort {
-
-
-}
+        private val userRepositoryPort: UserRepositoryPort
+) : UserFactoryPort
